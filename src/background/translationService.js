@@ -653,6 +653,7 @@ const translationService = (function () {
               ) => ({ text: value[0], detectedLanguage: value[1] })
             );
           }
+          console.log("cbParseResponse responseJson", responseJson)
           return responseJson;
         },
         function cbTransformResponse(result, dontSortResults) {
@@ -794,6 +795,7 @@ const translationService = (function () {
               }
             }
 
+            console.log("finalResultArray", finalResulArray)
             return finalResulArray;
           }
         },
@@ -1101,6 +1103,9 @@ const translationService = (function () {
       true
     );
     const service = serviceList.get(serviceName) || serviceList.get("google");
+
+    console.log("translateHTML", serviceName, sourceLanguage, targetLanguage, sourceArray2d)
+
     return await service.translate(
       sourceLanguage,
       targetLanguage,
@@ -1123,6 +1128,7 @@ const translationService = (function () {
       false
     );
     const service = serviceList.get(serviceName) || serviceList.get("google");
+    console.log("translateText", serviceName, sourceLanguage, sourceArray, targetLanguage)
     return (
       await service.translate(
         sourceLanguage,
@@ -1146,6 +1152,7 @@ const translationService = (function () {
       false
     );
     const service = serviceList.get(serviceName) || serviceList.get("google");
+    console.log("translateSingleText",serviceName, sourceLanguage, targetLanguage, originalText)
     return (
       await service.translate(
         sourceLanguage,
